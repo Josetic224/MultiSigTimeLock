@@ -44,17 +44,17 @@ contract MultiSig {
     }
 
     modifier onlyOwners() {
-        bool isOwner = false;
+        bool _isOwner = false;
 
         //loop into the array
         for (uint i = 0; i < owners.length; i++) {
             if (owners[i] == msg.sender) {
-                isOwner = true;
+                _isOwner = true;
                 break;
             }
         }
         require(
-            isOwner,
+            _isOwner,
             "You don't have enough permissions to call this function"
         );
         _;
